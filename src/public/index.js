@@ -36,3 +36,10 @@ socketClient.on("historico",(data)=>{
     
     
 })
+
+socketClient.on("newUser",()=>{
+    Swal.fire({
+        title:"Nuevo usuario conectado al chat!",
+        toast: true,
+    })
+})
