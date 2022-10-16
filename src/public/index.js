@@ -13,18 +13,17 @@ Swal.fire({
 
 }).then((res)=>{
     user=res.value;
-    console.log(user)
+    
 })
 
 input.addEventListener("keydown",(e)=>{
-    //console.log(e.key);
     if(e.key === "Enter"){
         socketClient.emit("message",
         {
             username:user,
             message:input.value,
         })
-        input.value=== "";
+        input.textContent=== "";
     }
 })
 socketClient.on("historico",(data)=>{
@@ -32,8 +31,8 @@ socketClient.on("historico",(data)=>{
     console.log(data)
     data.forEach((item)=>{
         elementos = elementos + `<p><strong>${item.username}</strong>${item.message}</p>`;
-        
+        messageContainer.innerHTML = elementos;
     })
-    messageContainer.innerHTML = elementos;
+    
     
 })
