@@ -3,7 +3,6 @@ const input = document.querySelector("input");
 const messageContainer = document.querySelector(".messageContainer");
 let user;
 
-console.log(messageContainer);
 
 
 Swal.fire({
@@ -13,7 +12,6 @@ Swal.fire({
 
 }).then((res)=>{
     user=res.value;
-    
 })
 
 input.addEventListener("keydown",(e)=>{
@@ -23,14 +21,16 @@ input.addEventListener("keydown",(e)=>{
             username:user,
             message:input.value,
         })
-        input.textContent=== "";
+        
     }
+    
 })
+input.innerHTML === "";
 socketClient.on("historico",(data)=>{
     let elementos = "";
     console.log(data)
     data.forEach((item)=>{
-        elementos = elementos + `<p><strong>${item.username}</strong>${item.message}</p>`;
+        elementos = elementos + `<p><strong>${item.username}: </strong> ${item.message}</p>`;
         messageContainer.innerHTML = elementos;
     })
     

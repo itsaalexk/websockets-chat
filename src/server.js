@@ -17,7 +17,7 @@ io.on("connection",(socket)=>{
     const {id } = socket
     console.log(`Connected to ${id}`)
     socket.on("message",(data)=>{
-        console.log(data)
+        
         mensajes.push(data);
         io.sockets.emit("historico",mensajes)
     })
